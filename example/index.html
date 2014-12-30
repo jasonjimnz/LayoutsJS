@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Layouts JS Alpha 1</title>
+	<!-- Javascript -->
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/layouts.min.js"></script>
+	<script type="text/javascript">
+		//Init Layouts js
+			$(document).ready(function(){
+				layjs.init();
+				//layjsUrl= "http://192.168.1.104:88/" Example for local API
+				layjsUrl= "http://yourAPI/"
+
+			});			
+
+			$(document).on('click', '.pag1',function(){
+				view.change('internal', '.page1');
+				model.api(
+					"GET",
+					{urlDestiny:"layapy.php?order=pag1", 
+						json:'{"user":"usr","pass":"pass"',
+					},
+					function(response){
+						//window.alert(layjsUrl+urlDestiny);
+						$('.page1').empty();
+						$('.page1').append('<h2>Page 1</h2>' + response.Content);
+					},
+					function(){
+						window.alert("Api couldn't connect");
+					});
+			});
+
+			$(document).on('click', '.homeBtn',function(){
+				view.change('internal', '.home');
+			});
+	</script>
+
+	<style type="text/css">
+		.layjsHide{display:none !important;}
+	</style>
+	<!-- End Javascript-->
+</head>
+<body>
+	<!-- App Layout -->
+		<div class="mainScreen">
+			<!-- Test Menu -->
+			<div id="testMenu">
+				<ul>
+					<a href="#" class="homeBtn"><li>Home</li></a>
+					<a href="#" class="pag1"><li>Page 1</li></a>
+				</ul>
+			</div>
+			<!-- End Test Menu -->
+
+			<!-- App Body: Layouts here -->
+
+			<!-- Home -->
+			<div class="layjs home">
+				<h2>Pagina Home</h2>
+			</div>
+			<!-- End Home -->
+
+			<!-- Page 1-->
+			<div class="layjs page1">
+				<h2>Pagina page 1</h2>
+			</div>
+			<!-- End Page 1-->
+
+			<!-- End App Body -->
+
+		</div>
+	<!-- End App Layout -->
+</body>
+</html>
