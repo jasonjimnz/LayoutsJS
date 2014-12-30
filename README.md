@@ -6,7 +6,7 @@ This plugin requires jQuery (Tested with jQuery 1.9) and it has been developed t
 
 -Usage:
 	After loading jQuery initialize the plugin.
-	$(document).ready(funciton(){
+	$(document).ready(function(){
 		layjs.init();
 	});
 
